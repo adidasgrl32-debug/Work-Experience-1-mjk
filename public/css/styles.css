@@ -802,6 +802,8 @@ img {
 
   .menu-toggle {
     display: block; 
+    position: relative;
+    z-index: 10;
   }
 
   .menu-toggle .icon-close {
@@ -812,17 +814,19 @@ img {
     display: none;
   }
   .menu-toggle.active .icon-close {
-    display: inline;
+    display: block;
+    color: white;
+    background: transparent;
   }
 
   .nav-links {
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 100%;
+    top: 0;
     left: 0;
     width: 100%;
-    background: #fff;
+    background: black;
     padding: 1rem 2rem;
     gap: 1rem;
   }
