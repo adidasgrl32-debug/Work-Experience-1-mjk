@@ -11,6 +11,19 @@
     "node": ">=20"
   },
   "dependencies": {
-    "express": "^4.22.3"
-  }
+    "express": "^4.22.3",
+    "sharp": "^0.35.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adidasgrl32-debug/Work-Experience-1-mjk.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/adidasgrl32-debug/Work-Experience-1-mjk/issues"
+  },
+  "homepage": "https://github.com/adidasgrl32-debug/Work-Experience-1-mjk#readme"
 }
