@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     iconOpen.classList.toggle('hidden', isOpen);
     iconClose.classList.toggle('hidden', !isOpen);
-
+    toggleBtn.classList.toggle('active', isOpen);
     toggleBtn.setAttribute('aria-expanded', isOpen);
   });
 });

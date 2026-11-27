@@ -46,9 +46,36 @@
           <label for="message">How can we help?</label>
           <textarea id="message" name="message" required></textarea>
 
+          <div class="hp-field" aria-hidden="true">
+            <label for="website">Company</label>
+            <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
+          </div>
+
           <button class="btn" type="submit">Send message</button>
           <p class="form-status" id="form-status" role="status"></p>
         </form>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('formLoadTime').value = Date.now();
+    });
+
+    document.getElementById('contactForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(e.target);
+      const payload = Object.fromEntries(formData.entries());
+
+      const response = await fetch('/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      const result = await response.json();
+      document.getElementById('status').textContent = result.message;
+    });
+  </script>
 
         <aside class="contact-aside">
           <h3>Email</h3>
