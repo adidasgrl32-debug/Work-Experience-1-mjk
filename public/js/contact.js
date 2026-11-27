@@ -33,3 +33,56 @@ form.addEventListener('submit', async (event) => {
     button.disabled = false;
   }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('contact-form');
+  
+  const timeInput = document.createElement('input');
+  timeInput.type = 'hidden';
+  timeInput.name = 'form_loaded_at';
+  timeInput.value = Date.now();
+  form.appendChild(timeInput);
+
+  form.addEventListener('submit', (e) => {
+    const honeypot = document.getElementById('company').value;
+    if (honeypot !== '') {
+      e.preventDefault();
+      form.innerHTML = '<p>Thank you! Your message has been sent.</p>';
+    }
+  });
+});
+
+const express = require('express');
+const app = express();
+
+app.use(express.json());
+app.use(express.static('public'));
+
+app.post('/submit-form', (req, res) => {
+  const { name, email, message, loadTime } = req.body;
+  const submissionTime = Date.now();
+  const minTimeMs = 3000; 
+
+  const parsedLoadTime = Number(loadTime);
+  if (!parsedLoadTime || isNaN(parsedLoadTime)) {
+    return res.status(400).json({ message: 'Invalid request.' });
+  }
+
+  const elapsedTime = submissionTime - parsedLoadTime;
+
+  if (elapsedTime < minTimeMs) {
+    console.log(`Bot detected! Form submitted in ${elapsedTime}ms. Dropping.`);
+    
+    return res.status(200).json({ message: 'Thank you for your message!' });
+  }
+
+  console.log(`Legitimate submission received in ${(elapsedTime / 1000).toFixed(2)}s:`, {
+    name,
+    email,
+    message
+  });
+
+  res.status(200).json({ message: 'Form submitted successfully!' });
+});
+
+app.listen(3000, () => console.log('Server running on http://localhost:3000'));
