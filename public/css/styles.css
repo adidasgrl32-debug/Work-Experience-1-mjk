@@ -21,7 +21,7 @@
 
 @font-face {
   font-family: 'Inter';
-  src: url('https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2') format('woff2');
+  src: url('../fonts/inter-regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -29,7 +29,7 @@
 
 @font-face {
   font-family: 'Inter';
-  src: url('https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2') format('woff2');
+  src: url('../fonts/inter-bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -810,15 +810,6 @@ img {
     grid-template-columns: 1fr 1fr;
   }
 
-  .playbook-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
-    align-items: center;
-    justify-content: center;
-    max-width: 760px;
-  }
-
   .menu-toggle {
     display: block; 
     position: relative;
@@ -881,7 +872,7 @@ img {
     grid-template-columns: 1fr;
   }
 
-  .playbook-grid, .card, .feature-row, .section, .footer-grid, .footer-bottom {
+  .card, .feature-row, .section, .footer-grid, .footer-bottom {
     display: grid;
     grid-template-columns: 1fr;
     gap: 12px;
